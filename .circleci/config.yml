@@ -13,6 +13,61 @@
      # - welcome/run
 version: 2
 jobs:
+  description: |
+  Configure and store AWS credentials in
+  ~/.aws/credentials and ~/.aws/config
+parameters:
+  aws-access-key-id:
+    default: AWS_ACCESS_KEY_ID
+    description: |
+      AWS access key id for IAM role. Set this to the name of
+      the environment variable you will use to hold this
+      value, i.e. AWS_ACCESS_KEY.
+    type: env_var_name
+  aws-region:
+    default: AWS_DEFAULT_REGION
+    description: |
+      Env var of AWS region to operate in
+      (defaults to AWS_DEFAULT_REGION)
+    type: env_var_name
+  aws-secret-access-key:
+    default: AWS_SECRET_ACCESS_KEY
+    description: |
+      AWS secret key for IAM role. Set this to the name of
+      the environment variable you will use to hold this
+      value, i.e. $AWS_SECRET_ACCESS_KEY.
+    type: env_var_name
+  configure-default-region:
+    default: true
+    description: >
+      Some AWS actions don't require a region; set this to false if you do not
+      want to store a default region in ~/.aws/config
+    type: boolean
+  profile-name:
+    default: default
+    description: Profile name to be configured.
+    type: string
+steps:
+  - run:
+      command: |
+        aws configure set aws_access_key_id \
+        $<<parameters.aws-access-key-id>> \
+        --profile <<parameters.profile-name>>
+      name: Configure AWS Access Key ID
+  - run:
+      command: |
+        aws configure set aws_secret_access_key \
+        $<<parameters.aws-secret-access-key>> \
+        --profile <<parameters.profile-name>>
+      name: Configure AWS Secret Access Key
+  - when:
+      condition: <<parameters.configure-default-region>>
+      steps:
+        - run:
+            command: |
+              aws configure set region $<<parameters.aws-region>> \
+              --profile <<parameters.profile-name>>
+            name: Configure AWS default region
   build:
     filters:
       branches:
