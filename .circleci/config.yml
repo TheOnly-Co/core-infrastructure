@@ -23,4 +23,4 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
-      - run: aws ec2 describe-instances
+      - run: aws ec2 describe-instances --region
