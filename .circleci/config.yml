@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version
       - image: amazon/aws-cli
-    region: AWS_DEFAULT_REGION
+    #region: AWS_DEFAULT_REGION
     steps:
       - checkout
       - run: aws iam list-users --region us-west-2
