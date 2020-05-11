@@ -11,4 +11,4 @@ jobs:
     region: AWS_DEFAULT_REGION
     steps:
       - checkout
-      - run: aws ec2 describe-instances --region us-west-2
+      - run: aws iam list-users --region us-west-2
