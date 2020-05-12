@@ -37,3 +37,4 @@ workflows:
   plan_and_apply:
     jobs:
       - plan
+      - apply
