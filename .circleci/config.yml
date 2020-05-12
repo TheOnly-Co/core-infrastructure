@@ -14,8 +14,18 @@ jobs:
       - checkout
       - run: terraform init
 
+  plan:
+    filters:
+      branches:
+        ignore:
+          - master
+    docker:
+      - image: hashicorp/terraform
+    steps:
+      - run: terraform plan 
 workflows:
   version: 2
   plan_and_apply:
     jobs:
       - init
+      - plan
