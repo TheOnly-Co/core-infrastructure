@@ -1,10 +1,10 @@
 version: 2
 jobs:
-    init: 
-      filters:
-        branches:
-          ignore:
-            - master
+  init: 
+    filters:
+      branches:
+        ignore:
+           - master
     docker:
       # specify the version
       - image: hashicorp/terraform
