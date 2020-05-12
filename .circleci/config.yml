@@ -26,3 +26,10 @@ jobs:
     steps:
       - checkout
       - run: terraform plan
+
+  workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - plan
