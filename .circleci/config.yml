@@ -12,7 +12,7 @@ jobs:
     #region: AWS_DEFAULT_REGION
     steps:
       - checkout
-      - run: terraform --version
+      - run: terraform --version 
   plan:
     filters:
       branches:
