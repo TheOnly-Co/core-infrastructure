@@ -19,5 +19,5 @@ workflows:
   version: 2
   plan_and_apply:
     jobs:
-      - init
+      - build
       - plan
