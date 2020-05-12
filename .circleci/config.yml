@@ -27,7 +27,7 @@ jobs:
       - checkout
       - run: terraform plan
 
-  workflows:
+workflows:
   version: 2
   plan_and_apply:
     jobs:
