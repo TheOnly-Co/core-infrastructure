@@ -17,6 +17,21 @@ jobs:
       - run: terraform init
       - run: terraform plan
 
+  apply: 
+    filters:
+      branches:
+        only:
+           - master
+ 
+    docker:
+      # specify the version
+      - image: hashicorp/terraform
+
+    #region: AWS_DEFAULT_REGION
+    steps:
+      - checkout
+      - run: terraform init
+      - run: terraform apply
 workflows:
   version: 2
   plan_and_apply:
