@@ -1,7 +1,7 @@
 version: 2
 jobs: 
- plan: 
-   filters:
+  plan: 
+    filters:
       branches:
         ignore:
            - master
@@ -14,19 +14,6 @@ jobs:
     steps:
       - checkout
       - run: terraform plan
- init: 
-   filters:
-      branches:
-        ignore:
-           - master
- 
-    docker:
-      # specify the version
-      - image: hashicorp/terraform
-
-    #region: AWS_DEFAULT_REGION
-    steps:
-      - checkout
       - run: terraform init
 
 workflows:
