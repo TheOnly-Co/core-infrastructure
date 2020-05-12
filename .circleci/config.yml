@@ -1,6 +1,5 @@
 version: 2
 jobs:
-  plan:
     init: 
       filters:
         branches:
@@ -19,5 +18,4 @@ workflows:
   version: 2
   plan_and_apply:
     jobs:
-      - build
-      - plan
+      - init
