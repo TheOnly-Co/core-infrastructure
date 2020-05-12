@@ -14,12 +14,10 @@ jobs:
     #region: AWS_DEFAULT_REGION
     steps:
       - checkout
-      - run: terraform init
       - run: terraform plan
 
 workflows:
   version: 2
   plan_and_apply:
     jobs:
-      - init
       - plan
