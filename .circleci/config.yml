@@ -1,5 +1,6 @@
 version: 2
-jobs: 
+jobs:
+
   plan: 
     filters:
       branches:
@@ -13,12 +14,12 @@ jobs:
     #region: AWS_DEFAULT_REGION
     steps:
       - checkout
-      - run: terraform plan
       - run: terraform init
+      - run: terraform plan
 
 workflows:
   version: 2
   plan_and_apply:
     jobs:
-      - plan
       - init
+      - plan
