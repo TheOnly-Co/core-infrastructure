@@ -22,6 +22,7 @@ jobs:
     docker:
       - image: hashicorp/terraform
     steps:
+      - checkout
       - run: terraform plan 
 workflows:
   version: 2
