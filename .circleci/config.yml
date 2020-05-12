@@ -31,7 +31,7 @@ jobs:
     steps:
       - checkout
       - run: terraform init
-      - run: terraform apply
+      - run: terraform apply -auto-approve -input=false
 workflows:
   version: 2
   plan_and_apply:
