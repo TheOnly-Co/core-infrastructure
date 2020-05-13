@@ -6,6 +6,6 @@ resource "aws_vpc" "core-infra" {
  }
 }
 resource "aws_subnet" "core-infra" {
-  vpc_id = "${aws_vpc.core-infra.id}"
+  vpc_id = aws_vpc.core-infra.id
   cidr_block = "10.0.0.0/24"
 }
