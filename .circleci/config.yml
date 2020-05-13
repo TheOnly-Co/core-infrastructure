@@ -1,21 +1,13 @@
 version: 2
 jobs:
-  plan:    
-    filters:
-      branches:
-        ignore:
-           - master
+  plan:         
     docker:
       - image: hashicorp/terraform
-    steps:
+    steps:      
       - checkout
       - run: terraform init
-      - run: terraform plan
+      - run: terraform plan 
   apply: 
-    filters:
-      branches:
-        only:
-           - master
     docker:
       - image: hashicorp/terraform
     steps:
@@ -31,6 +23,8 @@ workflows:
             branches:
               ignore: master
       - apply:
+          requires:
+            - plan
           filters:
             branches:
               only: master
