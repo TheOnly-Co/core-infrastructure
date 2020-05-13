@@ -14,24 +14,14 @@ jobs:
       - checkout
       - run: terraform init
       - run: terraform apply -auto-approve -input=false
-  final-plan:             
-    docker:
-      - image: hashicorp/terraform
-    steps:      
-      - checkout
-      - run: terraform init
-      - run: terraform plan 
 workflows:
   version: 2
   plan-and-apply:
     jobs:
-      - plan:
-          filters:
-            branches:
-              ignore: master
+      - plan
       - apply:
           requires:
-            - final-plan
+            - plan
           filters:
             branches:
               only: master
