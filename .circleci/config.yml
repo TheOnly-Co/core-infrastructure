@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  plan:         
+  build:         
     filters:
       branches:
         ignore:
@@ -10,7 +10,7 @@ jobs:
     steps:      
       - checkout
       - run: terraform init
-      - run: terraform plan
+      - run: terraform build
   apply: 
     filters:
       branches:
