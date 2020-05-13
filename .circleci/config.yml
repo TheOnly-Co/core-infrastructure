@@ -1,12 +1,12 @@
 version: 2
 jobs:
-  build:         
+  plan:         
     docker:
       - image: hashicorp/terraform
     steps:      
       - checkout
       - run: terraform init
-      - run: terraform build
+      - run: terraform plan 
   apply: 
     docker:
       - image: hashicorp/terraform
