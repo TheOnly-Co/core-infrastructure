@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  plan:         
+  plan:             
     docker:
       - image: hashicorp/terraform
     steps:      
