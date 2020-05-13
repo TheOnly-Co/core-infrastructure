@@ -1,10 +1,6 @@
 version: 2
 jobs:
   build:         
-    filters:
-      branches:
-        ignore:
-           - master
     docker:
       - image: hashicorp/terraform
     steps:      
@@ -12,17 +8,12 @@ jobs:
       - run: terraform init
       - run: terraform build
   apply: 
-    filters:
-      branches:
-        only:
-           - master
     docker:
       - image: hashicorp/terraform
     steps:
       - checkout
       - run: terraform init
       - run: terraform apply -auto-approve -input=false
-<<<<<<< HEAD
 workflows:
   version: 2
   plan-and-apply:
@@ -32,8 +23,8 @@ workflows:
             branches:
               ignore: master
       - apply:
+	  requires:
+            - plan
           filters:
             branches:
               only: master
-=======
->>>>>>> clean
