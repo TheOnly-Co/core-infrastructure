@@ -1,13 +1,13 @@
 version: 2
 jobs:
-  plan:    
+  plan:         
     filters:
       branches:
         ignore:
            - master
     docker:
       - image: hashicorp/terraform
-    steps:
+    steps:      
       - checkout
       - run: terraform init
       - run: terraform plan
