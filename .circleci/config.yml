@@ -22,6 +22,7 @@ jobs:
       - checkout
       - run: terraform init
       - run: terraform apply -auto-approve -input=false
+<<<<<<< HEAD
 workflows:
   version: 2
   plan-and-apply:
@@ -34,3 +35,5 @@ workflows:
           filters:
             branches:
               only: master
+=======
+>>>>>>> clean
