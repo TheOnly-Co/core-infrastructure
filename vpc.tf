@@ -9,3 +9,10 @@ resource "aws_subnet" "core-infra" {
   vpc_id = aws_vpc.core-infra.id
   cidr_block = "10.0.0.0/24"
 }
+
+resource "aws_internet_gateway" "core-infra"{
+  vpc_id = aws_vpc.core-infra.id
+  tags = {
+   Name = "core-infrastructure"
+ }
+}
