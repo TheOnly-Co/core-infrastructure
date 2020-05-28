@@ -3,7 +3,7 @@ resource "aws_vpc" "core-infra" {
   instance_tenancy = "dedicated"
   tags = {
     Name = "core-infra"
- }
+  }
 }       
 resource "aws_subnet" "core-infra" {
   vpc_id = aws_vpc.core-infra.id
