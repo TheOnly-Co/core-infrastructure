@@ -8,22 +8,22 @@ data "aws_ami" "amzn-ami" {
 	owners = ["137112412989"] #AWS
 }
 
-resource "aws_security_group" "allow_tls" {
-	name = "allow_tls"
-	description = "Allow TLS inbound traffic"
+resource "aws_security_group" "allow_ssh" {
+	name = "allow_ssh"
+	description = "Allow SSH inbound traffic"
         vpc_id = aws_vpc.core-infra.id
 
 	ingress {
 	  description = "TLS from VPC"
-	  from_port = 80
+	  from_port = 22
 	  to_port = 22
 	  protocol = "tcp"
 	}
 
 	egress {
-	  from_port = 22
-	  to_port = 22
-	  protocol = "tcp"
+	  from_port = 0
+	  to_port = 0
+	  protocol = "-1"
 	  cidr_blocks = ["0.0.0.0/0"]
 	}
 }
@@ -31,7 +31,7 @@ resource "aws_security_group" "allow_tls" {
 resource "aws_instance" "web" {
         ami = data.aws_ami.amzn-ami.id
         instance_type = "t3.medium"
-	security_groups = ["sg-046be863ffef4dff7"]
+	security_groups = aws_security_group.allow_ssh.id
 	subnet_id = "subnet-032e1cfe1fd9f3ae0"
 }
 
