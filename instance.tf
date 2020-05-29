@@ -32,7 +32,7 @@ resource "aws_instance" "web" {
         ami = data.aws_ami.amzn-ami.id
         instance_type = "t3.medium"
 	security_groups = [aws_security_group.allow_ssh.id]
-	subnet_id = [aws_subnet.id]
+	subnet_id = aws_subnet.id
 }
 
 resource "aws_key_pair" "deployer" {
