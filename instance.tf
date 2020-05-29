@@ -6,13 +6,32 @@ data "aws_ami" "amzn-ami" {
 	}
 	
 	owners = ["137112412989"] #AWS
-
 }
 
+resource "aws_security_group" "allow_tls" {
+	name = "allow_tls"
+	description = "Allow TLS inbound traffic"
+        vpc_id = "${aws_vpc.core-infra.id}"
+
+	ingress {
+	  description = "TLS from VPC"
+	  from_port = 80
+	  to_port = 22
+	  protocol = "tcp"
+	  cidr_blocks = aws_vpc.core-infra.cidr_block 	
+	}
+
+	egress {
+	  from_port = 22
+	  to_port = 22
+	  protocol = "tcp"
+	  cidr_blocks = ["0.0.0.0/0"]
+	}
+}
 
 resource "aws_instance" "web" {
-  	 ami = data.aws_ami.amzn-ami.id
- 	 instance_type = "t3.medium"
+        ami = data.aws_ami.amzn-ami.id
+        instance_type = "t3.medium"
 
 }
 
