@@ -1,7 +1,3 @@
-provider "aws" {
-	region = "us-west-2"
-}
-
 data "aws_ami" "amzn-ami" {
 	most_recent = true
 	filter{
