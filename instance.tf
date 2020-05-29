@@ -1,3 +1,7 @@
+provider "aws" {
+	region = "us-west-2"
+}
+
 data "aws_ami" "amzn-ami" {
 	most_recent = true
 	filter{
@@ -31,7 +35,8 @@ resource "aws_security_group" "allow_tls" {
 resource "aws_instance" "web" {
         ami = data.aws_ami.amzn-ami.id
         instance_type = "t3.medium"
-
+	security_groups = "allow_tls"
+	subnet_id = "subnet-032e1cfe1fd9f3ae0"
 }
 
 resource "aws_key_pair" "deployer" {
