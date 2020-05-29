@@ -32,7 +32,7 @@ resource "aws_instance" "web" {
         ami = data.aws_ami.amzn-ami.id
         instance_type = "t3.medium"
 	vpc_security_groups = ["sg-046be863ffef4dff7"]
-	subnet_id = ["subnet-032e1cfe1fd9f3ae0"]
+	subnet_id = "subnet-032e1cfe1fd9f3ae0"
 }
 
 resource "aws_key_pair" "deployer" {
