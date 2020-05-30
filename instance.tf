@@ -64,10 +64,8 @@ variable authorized_key {
 }
 
 resource "aws_route" "public_internet_gateway" {
-    count = var.create_vpc && length(var.public_subnets) > 0 ? 1 : 0
-    route_table_id = aws_route_table.public[0].id
+    route_table_id = "rtb-05fd94560d1c6e8c1"
     destination_cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.this[0].id
     
     timeouts {
         create = "5m"
