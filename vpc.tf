@@ -12,4 +12,13 @@ resource "aws_subnet" "core-infra" {
 
 resource "aws_internet_gateway" "gw"{
   vpc_id = aws_vpc.core-infra.id
+}
+
+resource "aws_nat_gateway" "gw"{
+  allocation_id = aws_internet_gateway.core-infra.id
+  subnet_id = aws_subnet.core-infra.id
+
+  tags = {
+    Name = "nat gateway"
+  }
 }    
