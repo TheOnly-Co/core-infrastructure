@@ -23,6 +23,8 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 resource "aws_security_group" "egress-all" {
+    name = "egress-all"    
+
     egress {
       from_port = 0
       to_port = 0
