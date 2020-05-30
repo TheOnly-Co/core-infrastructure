@@ -45,7 +45,7 @@ resource "aws_instance" "vm" {
         instance_type = "t3.medium"
         security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
         subnet_id = aws_subnet.core-infra.id
-        key_name = "deployer-key"
+        key_name = aws_key_pair.deployer.id
 
 }
 
