@@ -64,7 +64,7 @@ variable authorized_key {
 }
 
 resource "aws_route" "public_internet_gateway" {
-    route_table_id = "rtb-05fd94560d1c6e8c1"
+    route_table_id = "rtb-05fd94560d1c6e8c1" #tempoaray hardcode
     destination_cidr_block = "0.0.0.0/0"
     
     timeouts {
