@@ -24,6 +24,7 @@ resource "aws_security_group" "allow_ssh" {
 
 resource "aws_security_group" "egress-all" {
     name = "egress-all"    
+    vpc_id = aws_vpc.core-infra.id
 
     egress {
       from_port = 0
@@ -39,11 +40,13 @@ resource "aws_key_pair" "deployer" {
         public_key = var.authorized_key
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "vm" {
         ami = data.aws_ami.amzn-ami.id
         instance_type = "t3.medium"
-        security_groups = [aws_security_group.allow_ssh.id]
+        security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
         subnet_id = aws_subnet.core-infra.id
+        key_name = "deployer-key"
+
 }
 
 variable authorized_key {
