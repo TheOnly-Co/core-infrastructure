@@ -40,7 +40,7 @@ resource "aws_key_pair" "deployer" {
         public_key = var.authorized_key
 }
 
-resource "aws_instance" "vm" {
+resource "aws_instance" "bastion-host" {
         ami = data.aws_ami.amzn-ami.id
         instance_type = "t3.medium"
         security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
