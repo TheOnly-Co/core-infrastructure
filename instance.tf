@@ -35,8 +35,8 @@ resource "aws_security_group" "egress-all" {
 }
 
 
-resource "aws_key_pair" "deployer" {
-        key_name = "deployer-key"
+resource "aws_key_pair" "infra-master" {
+        key_name = "infra-master-key"
         public_key = var.authorized_key
 }
 
@@ -45,7 +45,7 @@ resource "aws_instance" "bastion-host" {
         instance_type = "t3.medium"
         security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
         subnet_id = aws_subnet.core-infra.id
-        key_name = aws_key_pair.deployer.id
+        key_name = aws_key_pair.infra-master.id
 
 }
 
