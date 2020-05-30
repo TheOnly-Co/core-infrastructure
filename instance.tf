@@ -19,7 +19,6 @@ resource "aws_security_group" "allow_ssh" {
       to_port = 22
       protocol = "ssh"
     }
-
 }
 
 resource "aws_security_group" "egress-all" {
@@ -36,19 +35,29 @@ resource "aws_security_group" "egress-all" {
 
 
 resource "aws_key_pair" "infra-master" {
-        key_name = "infra-master-key"
-        public_key = var.authorized_key
+    key_name = "infra-master-key"
+    public_key = var.authorized_key
 }
 
 resource "aws_instance" "bastion-host" {
-        ami = data.aws_ami.amzn-ami.id
-        instance_type = "t3.medium"
-        security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
-        subnet_id = aws_subnet.core-infra.id
-        key_name = aws_key_pair.infra-master.id
+    ami = data.aws_ami.amzn-ami.id
+    instance_type = "t3.medium"
+    security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
+    subnet_id = aws_subnet.core-infra.id
+    key_name = aws_key_pair.infra-master.id
 
 }
 
+resource "aws_eip" "bastion-eip"{
+    vpc = true
+    instance = aws_instance.bastion-host.id
+
+    tags = {
+      Assignment = aws_instance.bastion-host.id
+      Comment = "Managed by Terraform"
+    }
+}
+
 variable authorized_key {
-        description = "The public ssh rsa key you generated"
+    description = "The public ssh rsa key you generated"
 }
