@@ -33,16 +33,17 @@ resource "aws_security_group" "egress-all" {
     }
 }
 
+
+resource "aws_key_pair" "deployer" {
+        key_name = "deployer-key"
+        public_key = var.authorized_key
+}
+
 resource "aws_instance" "web" {
         ami = data.aws_ami.amzn-ami.id
         instance_type = "t3.medium"
         security_groups = [aws_security_group.allow_ssh.id]
         subnet_id = aws_subnet.core-infra.id
-}
-
-resource "aws_key_pair" "deployer" {
-        key_name = "deployer-key"
-        public_key = var.authorized_key
 }
 
 variable authorized_key {
