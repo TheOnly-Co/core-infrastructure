@@ -15,7 +15,7 @@ resource "aws_internet_gateway" "gw"{
 }
 
 resource "aws_nat_gateway" "gw"{
-  allocation_id = aws_internet_gateway.core-infra.id
+  allocation_id = aws_internet_gateway.id
   subnet_id = aws_subnet.core-infra.id
 
   tags = {
