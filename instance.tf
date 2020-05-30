@@ -54,6 +54,7 @@ resource"aws_eip" "bastion-eip"{
         instance = aws_instance.bastion-host.id
 
     tags = {
+        Assignment = aws_instance.bastion-host.id
         Comment = "Managed by Terraform"
     }
 
