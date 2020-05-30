@@ -49,7 +49,7 @@ resource "aws_instance" "bastion-host" {
 
 }
 
-resource"aws_eip" "bastion-eip"{
+resource "aws_eip" "bastion-eip"{
         vpc = true
         instance = aws_instance.bastion-host.id
 
