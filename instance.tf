@@ -65,7 +65,6 @@ variable authorized_key {
 
 resource "aws_route" "public_internet_gateway" {
     route_table_id = aws_route_table.rt.id #from the table below
-    destination_cidr_block = "0.0.0.0/0"
     instance_id = aws_instance.bastion-host.id
     
     timeouts {
