@@ -27,7 +27,7 @@ resource "aws_route_table" "rt" {
   vpc_id = aws_vpc.core-infra.id
   
   route {
-    cidr_block = "10.0.1.0/24"
+    cidr_block = "172.31.0.0/16"
     gateway_id = aws_internet_gateway.gw.id
   }
  }
