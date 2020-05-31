@@ -64,7 +64,7 @@ variable authorized_key {
 }
 
 resource "aws_route" "public_internet_gateway" {
-    route_table_id = aws_route_table.core-infra.id #from the table below
+    route_table_id = aws_route_table.rt.id #from the table below
     destination_cidr_block = "0.0.0.0/0"
     
     timeouts {
@@ -77,7 +77,7 @@ resource "aws_route_table" "rt" {
     
     route {
         cidr_block = "10.0.0.0/16"
-        gateway_id = aws_internet_gateway.core-infra.id
+        gateway_id = aws_internet_gateway.gw.id
     }
 }
 
