@@ -17,7 +17,7 @@
    - Attach Elastic IP to internet gateway.
    - Specify `ingress` and `egress` rule and `CIDR` blocks.
  - [AWS amazon linux 2](https://aws.amazon.com/amazon-linux-2/)
-  
+   - Working with ami.  
 
 ## Okta
 
