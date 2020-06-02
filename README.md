@@ -11,7 +11,7 @@
   
  - Amazon Virtual Private Cloud
    - Setup VPC and subnets.
-   -Create Internet Gateway.
+   - Create Internet Gateway.
  - AWS Instances
    - Running on **t3.medium.**
    - Attach Elastic IP to internet gateway.
