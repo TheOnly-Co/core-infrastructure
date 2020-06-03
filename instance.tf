@@ -45,7 +45,7 @@ resource "aws_instance" "bastion-host" {
     instance_type = "t3.medium"
     # count = 0
     security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
-    subnet_id = vpc-west.public_subnets[0].id
+    subnet_id = module.vpc-west.public_subnets[0].id
     key_name = aws_key_pair.infra-master.id
 
 }
