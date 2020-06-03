@@ -36,9 +36,15 @@ resource "aws_route_table" "route-table" {
   }
  }
  
-resource "aws_route_table_association" "associations" {
+resource "aws_route_table_association" "associations-a" {
     route_table_id = aws_route_table.route-table.id
     subnet_id = aws_subnet.core-infra-a.id
-    # subnet_id_b = aws_subnet.core-infra-b.id
-    # subnet_id_c = aws_subnet.core-infra-c.id
+}
+resource "aws_route_table_association" "associations-b" {
+    route_table_id = aws_route_table.route-table.id
+    subnet_id_b = aws_subnet.core-infra-b.id
+}
+resource "aws_route_table_association" "associations-c" {
+    route_table_id = aws_route_table.route-table.id
+    subnet_id_c = aws_subnet.core-infra-c.id
 }
