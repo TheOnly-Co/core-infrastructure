@@ -52,10 +52,10 @@ resource "aws_instance" "bastion-host" {
 
 resource "aws_eip" "bastion-eip"{
     vpc = true
-    instance = aws_instance.bastion-host.id
+    instance = aws_instance.bastion-host.id[0]
 
     tags = {
-      Assignment = aws_instance.bastion-host.id
+      Assignment = aws_instance.bastion-host.id[0]
       Comment = "Managed by Terraform"
     }
 }
