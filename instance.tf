@@ -11,7 +11,7 @@ data "aws_ami" "amzn-ami" {
 resource "aws_security_group" "allow_ssh" {
     name = "allow_ssh"
     description = "Allow SSH inbound traffic"
-    vpc_id = aws_vpc.core-infra.id
+    vpc_id = module.vpc-west.vpc_id
 
     ingress {
       description = "Allow SSH Connection"
@@ -24,7 +24,7 @@ resource "aws_security_group" "allow_ssh" {
 
 resource "aws_security_group" "egress-all" {
     name = "egress-all"    
-    vpc_id = aws_vpc.core-infra.id
+    vpc_id = module.vpc-west.vpc_id
 
     egress {
       from_port = 0
@@ -45,7 +45,7 @@ resource "aws_instance" "bastion-host" {
     instance_type = "t3.medium"
     # count = 0
     security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
-    subnet_id = aws_subnet.core-infra.id
+    subnet_id = module.vpc-west.public_subnets[0]
     key_name = aws_key_pair.infra-master.id
 
 }
@@ -63,5 +63,3 @@ resource "aws_eip" "bastion-eip"{
 variable authorized_key {
     description = "The public ssh rsa key you generated"
 }
-
-
