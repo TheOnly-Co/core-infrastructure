@@ -5,9 +5,22 @@ resource "aws_vpc" "core-infra" {
     Name = "core-infra"
   }
 }       
-resource "aws_subnet" "core-infra" {
+resource "aws_subnet" "core-infra-a" {
   vpc_id = aws_vpc.core-infra.id
+  availability_zone = "us-west-2a"
   cidr_block = "10.0.0.0/24"
+}
+
+resource "aws_subnet" "core-infra-b" {
+  vpc_id = aws_vpc.core-infra.id
+  availability_zone = "us-west-2b"
+  cidr_block = "10.0.0.1/24"
+}
+
+resource "aws_subnet" "core-infra-c" {
+  vpc_id = aws_vpc.core-infra.id
+  availability_zone = "us-west-2c"
+  cidr_block = "10.0.0.2/24"
 }
 
 resource "aws_internet_gateway" "gw"{
@@ -25,5 +38,7 @@ resource "aws_route_table" "route-table" {
  
 resource "aws_route_table_association" "associations" {
     route_table_id = aws_route_table.route-table.id
-    subnet_id = aws_subnet.core-infra.id
+    subnet_id = aws_subnet.core-infra-a.id
+    ubnet_id = aws_subnet.core-infra-b.id
+    subnet_id = aws_subnet.core-infra-c.id
 }
