@@ -43,7 +43,7 @@ resource "aws_key_pair" "infra-master" {
 resource "aws_instance" "bastion-host" {
     ami = data.aws_ami.amzn-ami.id
     instance_type = "t3.medium"
-    # count = 0
+    count = 0
     security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
     subnet_id = aws_subnet.core-infra.id
     key_name = aws_key_pair.infra-master.id
