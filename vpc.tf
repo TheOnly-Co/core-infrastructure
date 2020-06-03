@@ -39,6 +39,6 @@ resource "aws_route_table" "route-table" {
 resource "aws_route_table_association" "associations" {
     route_table_id = aws_route_table.route-table.id
     subnet_id = aws_subnet.core-infra-a.id
-    ubnet_id = aws_subnet.core-infra-b.id
+    subnet_id = aws_subnet.core-infra-b.id
     subnet_id = aws_subnet.core-infra-c.id
 }
