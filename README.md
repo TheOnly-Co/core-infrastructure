@@ -13,7 +13,7 @@
    - Setup VPC and subnets.
    - Create Internet Gateway.
  - AWS Instances
-   - Running on **t3.medium.**
+   - Running on **t3.micro.**
    - Attach Elastic IP to internet gateway.
    - Specify `ingress` and `egress` rule and `CIDR` blocks.
  - [AWS amazon linux 2](https://aws.amazon.com/amazon-linux-2/)
