@@ -46,7 +46,7 @@ resource "aws_instance" "bastion-host" {
     security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
     subnet_id = module.vpc-west.public_subnets[0]
     key_name = aws_key_pair.infra-master.id
-    instance_state = stopped
+    instance_state = "stopped"
 }
 
 resource "aws_eip" "bastion-eip"{
