@@ -47,7 +47,7 @@ resource "aws_key_pair" "infra-master" {
     # security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
     # subnet_id = module.vpc-west.public_subnets[0]
     # key_name = aws_key_pair.infra-master.id
-}
+# }
 
 # resource "aws_eip" "bastion-eip"{
    # vpc = true
