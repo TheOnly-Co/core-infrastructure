@@ -40,13 +40,13 @@ resource "aws_key_pair" "infra-master" {
     public_key = var.authorized_key
 }
 
-resource "aws_instance" "bastion-host" {
+# resource "aws_instance" "bastion-host" {
     # instance_state = "stopped"
-    ami = data.aws_ami.amzn-ami.id
-    instance_type = "t3.micro"
-    security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
-    subnet_id = module.vpc-west.public_subnets[0]
-    key_name = aws_key_pair.infra-master.id
+    # ami = data.aws_ami.amzn-ami.id
+    # instance_type = "t3.micro"
+    # security_groups = [aws_security_group.allow_ssh.id, aws_security_group.egress-all.id]
+    # subnet_id = module.vpc-west.public_subnets[0]
+    # key_name = aws_key_pair.infra-master.id
 }
 
 # resource "aws_eip" "bastion-eip"{
