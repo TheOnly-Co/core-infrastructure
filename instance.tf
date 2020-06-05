@@ -49,15 +49,15 @@ resource "aws_instance" "bastion-host" {
     key_name = aws_key_pair.infra-master.id
 }
 
-resource "aws_eip" "bastion-eip"{
-    vpc = true
-    instance = aws_instance.bastion-host.id
+# resource "aws_eip" "bastion-eip"{
+   # vpc = true
+    # instance = aws_instance.bastion-host.id
 
-    tags = {
-      Assignment = aws_instance.bastion-host.id
-      Comment = "Managed by Terraform"
-    }
-}
+    # tags = {
+     # Assignment = aws_instance.bastion-host.id
+      # Comment = "Managed by Terraform"
+    # }
+# }
 
 variable authorized_key {
     description = "The public ssh rsa key you generated"
