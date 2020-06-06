@@ -5,7 +5,7 @@
 
 [![CircleCI](https://circleci.com/gh/TheOnly-Co/core-infrastructure.svg?style=shield)](https://circleci.com/gh/TheOnly-Co/core-infrastructure)
  - Configure `config.yml` to allow asynchronous updates with github.
- - Staging commnads to plan/apply to master.
+ - Staging commands to plan/apply jobs to the master branch.
 
 ## AWS
   
