@@ -35,10 +35,10 @@ resource "aws_security_group" "egress-all" {
 }
 
 
-resource "aws_key_pair" "infra-master" {
-    key_name = "infra-master-key"
-    public_key = var.authorized_key
-}
+# resource "aws_key_pair" "infra-master" {
+  #  key_name = "infra-master-key"
+  #  public_key = var.authorized_key
+# }
 
 # resource "aws_instance" "bastion-host" {
     # instance_state = "stopped"
