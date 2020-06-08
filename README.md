@@ -1,5 +1,5 @@
 # Core-Infrastructure
-  Core security infrastructure built to support TheOnly-Co. 
+  **Core security infrastructure built to support TheOnly-Co.** 
 
 ## CircleCi
 
