@@ -14,7 +14,7 @@ provider "kubernetes" {
 }
 
 module "core-infra-eks" {
-    source = git::https://github.com/terraform-aws-modules/terraform-aws-eks 
+    source = "git::https://github.com/terraform-aws-modules/terraform-aws-eks" 
     cluster_name = "core-infra-eks"
     cluster_version = "1.16"
     subnets = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"] 
