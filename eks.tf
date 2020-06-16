@@ -27,7 +27,7 @@ module "core-infra-eks" {
     worker_groups = [
         {
           instace_type = "m3.micro"
-          asg_max_size = 5
+          asg_max_size = 1
         }
     
     ]
