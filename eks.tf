@@ -10,7 +10,7 @@ module "core-infra-eks" {
     source = "git::https://github.com/terraform-aws-modules/terraform-aws-eks" 
     cluster_name = "core-infra-eks"
     cluster_version = "1.16"
-    subnets = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"] 
+    subnets = [module.vpc-west.public_subnets[0],module.vpc-west.public_subnets[1],module.vpc-west.public_subnets[2]] 
     vpc_id = module.vpc-west.vpc_id
     map_roles = [
         {
