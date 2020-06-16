@@ -4,7 +4,7 @@
 
 locals {
   config_map_aws_auth_west = <<CONFIGMAPAWSAUTH
-- rolearn: ${module.api-west-cluster.worker_node_role_arn}
+- rolearn: ${module.core-infra-eks.worker_iam_role_arn}
   username: system:node:{{EC2PrivateDNSName}}
   groups:
     - system:bootstrappers
