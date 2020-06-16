@@ -12,7 +12,18 @@ module "core-infra-eks" {
     cluster_version = "1.16"
     subnets = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"] 
     vpc_id = module.vpc-west.vpc_id
-    map_roles = local.config_map_aws_auth_west
+    map_roles = [
+        {
+            rolearn = var.devops_admin_arn
+            username = "devops-admin"
+            groups = ["system:masters"]
+        },
+        {
+            rolearn = module.core-infra-eks.worker_iam_role_arn
+            username = system:node:{{EC2PrivateDNSName}}
+            groups = ["system:nodes","system:bootstrappers"]
+        }
+    ]
     worker_groups = [
         {
           instace_type = "m3.micro"
@@ -21,4 +32,6 @@ module "core-infra-eks" {
     
     ]
 }
-
+variable devops_admin_arn {
+    description = "The arn of the devops admin access account"
+}
