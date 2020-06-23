@@ -1,4 +1,4 @@
-source "aws_iam_role" "cicd-service-role" {
+resource "aws_iam_role" "cicd-service-role" {
   name               = "cicd-service-role"
   assume_role_policy = data.aws_iam_policy_document.assume-service-role-policy.json
 }
