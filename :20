@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "assume-service-role-policy" {
     actions = ["sts:AssumeRole"]
 
     principals {
-      identifiers = ["module.core-infra-eks.worker_iam_role_arn"]
+      identifiers = ["eks.worker_iam_role_arn"]
       type        = "AWS"
     }
   }
