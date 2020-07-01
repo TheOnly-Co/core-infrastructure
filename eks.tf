@@ -26,8 +26,12 @@ module "core-infra-eks" {
     ]
     worker_groups = [
         {
+          name = "eks-spot"
+          spot_price = "0.0104"
           instace_type = "t3.micro"
           asg_max_size = 1
+          kubelet_extra_args  = "--node-labels=node.kubernetes.io/lifecycle=spot"
+          suspended_processes = ["AZRebalance"]
         }
     
     ]
