@@ -8,16 +8,18 @@
  - Staging commands to plan/apply jobs to the master branch.
 
 ## AWS
-  
+ - Elastic Kubernetes Service
+    - Couple CICD with helm to deploy software
+    - Set up EKS rbac with AWS roles and permissions   
  - Amazon Virtual Private Cloud
-   - Setup VPC and subnets.
-   - Create Internet Gateway.
+   - Setup VPC and subnets
+   - Create Internet Gateway
  - AWS Instances
    - Running on **t3.micro.**
-   - Attach Elastic IP to internet gateway.
-   - Specify `ingress` and `egress` rule and `CIDR` blocks.
+   - Attach Elastic IP to internet gateway
+   - Specify `ingress` and `egress` rule and `CIDR` blocks
  - [AWS amazon linux 2](https://aws.amazon.com/amazon-linux-2/)
-   - Working with ami.  
+   - Working with ami
 
 ## Okta
 
