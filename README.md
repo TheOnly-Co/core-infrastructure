@@ -10,12 +10,13 @@
 ## AWS
  - Elastic Kubernetes Service
     - Couple CICD with helm to deploy software
-    - Set up EKS rbac with AWS roles and permissions   
- - Amazon Virtual Private Cloud
-   - Setup VPC and subnets
-   - Create Internet Gateway
- - AWS Instances
-   - Running on **t3.micro.**
+    - Set up EKS rbac with AWS roles and permissions
+    - Logging and monitoring with elaticsearch     
+ - Virtual Private Cloud
+   - Setup VPC and subnets with terraform and created internet gateway
+   - Running EC2 instances
+ - EC2 Instances
+   - Running on **t3.micro**
    - Attach Elastic IP to internet gateway
    - Specify `ingress` and `egress` rule and `CIDR` blocks
  - [AWS amazon linux 2](https://aws.amazon.com/amazon-linux-2/)
