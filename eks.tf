@@ -1,7 +1,7 @@
 data "aws_eks_cluster" "cluster" {
     name = module.core-infra-eks.cluster_id
 }
-
+#comment
 data "aws_eks_cluster_auth" "cluster" {
     name = module.core-infra-eks.cluster_id
 }
