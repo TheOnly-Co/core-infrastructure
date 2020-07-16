@@ -35,3 +35,16 @@ module "core-infra-eks" {
 variable devops_admin_arn {
     description = "The arn of the devops admin access account"
 }
+
+resource "aws_eks_node_group" "elastic" {
+    cluster_name = aws_eks_cluster.cluster.name
+    node_group_name = "elastic"
+    node_role_arn = arn:aws:iam::216228501626:role/core-infra-eks20200616045837471300000001 #temp hardcode
+    subnet_ids = subnet-0964059ea7a5f1021
+
+    scaling_config {
+        desired_size = 4
+        max_size = 5 
+        min_size = 1 
+    }
+}
