@@ -37,7 +37,7 @@ variable devops_admin_arn {
 }
 
 resource "aws_eks_node_group" "elastic" {
-    cluster_name = module.core-infra-eks
+    cluster_name = module.cluster.core-infra-eks.name
     node_group_name = "elastic"
     node_role_arn = "arn:aws:iam::216228501626:role/core-infra-eks20200616045837471300000001" 
     subnet_ids = "subnet-0964059ea7a5f1021"
