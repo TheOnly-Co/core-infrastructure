@@ -23,3 +23,7 @@ data "aws_iam_policy_document" "assume-service-role-policy" {
   }
 }
 
+resource "aws_iam_role" "default-service-role" {
+  name               = "default-service-role"
+  assume_role_policy = data.aws_iam_policy_document.assume-service-role-policy.json
+}
