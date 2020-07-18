@@ -22,11 +22,6 @@ module "core-infra-eks" {
             rolearn = module.core-infra-eks.worker_iam_role_arn
             username = "system:node:{{EC2PrivateDNSName}}"
             groups = ["system:nodes","system:bootstrappers"]
-        },
-        {
-            rolearn = aws_iam_role.default-service-role.arn
-            username = "system:serviceaccount:infra:default"
-            groups = ["system:masters"]
         }
     ]
     worker_groups = [
