@@ -3,6 +3,7 @@ module "core-infra-es" {
   name = "core-infra-es"
   vpc_id = module.vpc-west.vpc_id
   subnet_ids = module.vpc-west.public_subnets
+  itype = "t2.small.elasticsearch"
 }
 
 
